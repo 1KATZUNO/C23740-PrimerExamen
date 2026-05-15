@@ -5,30 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Reservas Restaurante</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Restaurante.UI.styles.css" asp-append-version="true" />
 </head>
-<body class="bg-light">
+<body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom shadow-sm mb-4">
+            <div class="container">
                 <a class="navbar-brand" asp-controller="Mesas" asp-action="Index">
-                    Reservas Restaurante
+                    <i class="bi bi-shop-window"></i> Reservas Restaurante
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Mostrar/ocultar menú">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-controller="Mesas" asp-action="Index">Registro de mesas</a>
+                            <a class="nav-link" asp-controller="Mesas" asp-action="Index">
+                                <i class="bi bi-card-list"></i> Registro de mesas
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-controller="MesasDisponibles" asp-action="Index">Mesas disponibles</a>
+                            <a class="nav-link" asp-controller="MesasDisponibles" asp-action="Index">
+                                <i class="bi bi-check2-circle"></i> Disponibles
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-controller="MesasReservadas" asp-action="Index">Mesas reservadas</a>
+                            <a class="nav-link" asp-controller="MesasReservadas" asp-action="Index">
+                                <i class="bi bi-bookmark-check"></i> Reservadas
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -39,18 +47,19 @@
         <main role="main" class="pb-3">
             @if (TempData["Mensaje"] is string mensaje)
             {
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    @mensaje
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert">
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    <div>@mensaje</div>
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Cerrar"></button>
                 </div>
             }
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - Reservas Restaurante - Primer Examen — Lenguajes para Aplicaciones Comerciales
+    <footer class="border-top footer text-muted py-3">
+        <div class="container small">
+            &copy; 2026 — Reservas Restaurante · Primer Examen — Lenguajes para Aplicaciones Comerciales
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

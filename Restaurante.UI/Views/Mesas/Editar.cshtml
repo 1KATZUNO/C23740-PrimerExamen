@@ -3,46 +3,70 @@
     ViewData["Title"] = "Editar mesa";
 }
 
-<h1 class="h3 mb-4">Editar mesa</h1>
+<div class="page-header mb-4">
+    <h1 class="h3"><i class="bi bi-pencil-square text-primary me-2"></i>Editar mesa #@Model.NumeroMesa</h1>
+    <p class="subtitle">Solo se modifican los datos del catálogo; los datos de reserva no se ven afectados.</p>
+</div>
 
 <div class="row">
-    <div class="col-md-6">
-        <form asp-action="Editar" method="post" class="card shadow-sm">
-            <div class="card-body">
-                <div asp-validation-summary="ModelOnly" class="alert alert-danger d-none"></div>
-                <input type="hidden" asp-for="Id" />
-                <input type="hidden" asp-for="Estado" />
-
-                <div class="mb-3">
-                    <label asp-for="NumeroMesa" class="form-label"></label>
-                    <input asp-for="NumeroMesa" class="form-control" autocomplete="off" />
-                    <span asp-validation-for="NumeroMesa" class="text-danger"></span>
-                </div>
-
-                <div class="mb-3">
-                    <label asp-for="Capacidad" class="form-label"></label>
-                    <input asp-for="Capacidad" class="form-control" />
-                    <span asp-validation-for="Capacidad" class="text-danger"></span>
-                </div>
-
-                <div class="mb-3">
-                    <label asp-for="Seccion" class="form-label"></label>
-                    <input asp-for="Seccion" class="form-control" autocomplete="off" />
-                    <span asp-validation-for="Seccion" class="text-danger"></span>
-                </div>
-
-                <div class="mb-3">
-                    <label asp-for="PrecioPorPersona" class="form-label"></label>
-                    <input asp-for="PrecioPorPersona" class="form-control" step="0.01" />
-                    <span asp-validation-for="PrecioPorPersona" class="text-danger"></span>
-                </div>
-
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
-                </div>
+    <div class="col-md-7 col-lg-6">
+        <div class="card shadow-sm">
+            <div class="card-header bg-light">
+                <i class="bi bi-pencil-square me-1"></i> Datos de la mesa
             </div>
-        </form>
+            <div class="card-body">
+                <form asp-action="Editar" method="post">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger d-none"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="Estado" />
+
+                    <div class="mb-3">
+                        <label asp-for="NumeroMesa" class="form-label"></label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-hash"></i></span>
+                            <input asp-for="NumeroMesa" class="form-control" autocomplete="off" />
+                        </div>
+                        <span asp-validation-for="NumeroMesa" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Capacidad" class="form-label"></label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-people"></i></span>
+                            <input asp-for="Capacidad" class="form-control" />
+                        </div>
+                        <span asp-validation-for="Capacidad" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Seccion" class="form-label"></label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                            <input asp-for="Seccion" class="form-control" autocomplete="off" />
+                        </div>
+                        <span asp-validation-for="Seccion" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="PrecioPorPersona" class="form-label"></label>
+                        <div class="input-group">
+                            <span class="input-group-text">₡</span>
+                            <input asp-for="PrecioPorPersona" class="form-control" step="0.01" />
+                        </div>
+                        <span asp-validation-for="PrecioPorPersona" class="text-danger small"></span>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-save me-1"></i> Guardar cambios
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="bi bi-x-circle me-1"></i> Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 

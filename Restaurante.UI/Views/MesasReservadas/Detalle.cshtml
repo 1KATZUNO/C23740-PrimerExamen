@@ -3,58 +3,88 @@
     ViewData["Title"] = "Detalle de la reserva";
 }
 
-<h1 class="h3 mb-4">Detalle de la reserva — Mesa #@Model.NumeroMesa</h1>
+<div class="page-header d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3"><i class="bi bi-receipt text-primary me-2"></i>Detalle de la reserva</h1>
+        <p class="subtitle">Mesa #@Model.NumeroMesa</p>
+    </div>
+    @if (Model.Estado == (int)EstadoMesa.Reservada)
+    {
+        <span class="badge estado bg-warning-subtle text-warning-emphasis border border-warning-subtle">
+            <i class="bi bi-bookmark-check"></i> @Model.EstadoNombre
+        </span>
+    }
+    else
+    {
+        <span class="badge estado bg-success-subtle text-success border border-success-subtle">
+            <i class="bi bi-check2-circle"></i> @Model.EstadoNombre
+        </span>
+    }
+</div>
 
-<div class="card shadow-sm">
-    <div class="card-body">
-        <dl class="row mb-0">
-            <dt class="col-sm-4">Número de mesa</dt>
-            <dd class="col-sm-8">@Model.NumeroMesa</dd>
+<div class="row g-3">
+    <div class="col-lg-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-light">
+                <i class="bi bi-table me-1"></i> Información de la mesa
+            </div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-5 text-muted">Número de mesa</dt>
+                    <dd class="col-sm-7">#@Model.NumeroMesa</dd>
 
-            <dt class="col-sm-4">Estado</dt>
-            <dd class="col-sm-8">
-                @if (Model.Estado == (int)EstadoMesa.Disponible)
-                {
-                    <span class="badge bg-success">@Model.EstadoNombre</span>
-                }
-                else
-                {
-                    <span class="badge bg-warning text-dark">@Model.EstadoNombre</span>
-                }
-            </dd>
+                    <dt class="col-sm-5 text-muted">Capacidad</dt>
+                    <dd class="col-sm-7"><i class="bi bi-people text-muted"></i> @Model.Capacidad personas</dd>
 
-            <dt class="col-sm-4">Capacidad</dt>
-            <dd class="col-sm-8">@Model.Capacidad</dd>
+                    <dt class="col-sm-5 text-muted">Sección</dt>
+                    <dd class="col-sm-7">@Model.Seccion</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
 
-            <dt class="col-sm-4">Sección</dt>
-            <dd class="col-sm-8">@Model.Seccion</dd>
+    <div class="col-lg-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-light">
+                <i class="bi bi-person-vcard me-1"></i> Información del cliente
+            </div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-5 text-muted">Nombre del cliente</dt>
+                    <dd class="col-sm-7">@Model.NombreCliente</dd>
 
-            <dt class="col-sm-4">Nombre del cliente</dt>
-            <dd class="col-sm-8">@Model.NombreCliente</dd>
+                    <dt class="col-sm-5 text-muted">Identificación</dt>
+                    <dd class="col-sm-7">@Model.IdentificacionCliente</dd>
 
-            <dt class="col-sm-4">Identificación del cliente</dt>
-            <dd class="col-sm-8">@Model.IdentificacionCliente</dd>
+                    <dt class="col-sm-5 text-muted">Fecha de la reserva</dt>
+                    <dd class="col-sm-7">
+                        <i class="bi bi-calendar-event text-muted"></i>
+                        @(Model.FechaReserva?.ToString("dd/MM/yyyy"))
+                    </dd>
 
-            <dt class="col-sm-4">Fecha de la reserva</dt>
-            <dd class="col-sm-8">@(Model.FechaReserva?.ToString("dd/MM/yyyy"))</dd>
+                    <dt class="col-sm-5 text-muted">Cantidad de comensales</dt>
+                    <dd class="col-sm-7">@Model.CantidadComensales</dd>
 
-            <dt class="col-sm-4">Cantidad de comensales</dt>
-            <dd class="col-sm-8">@Model.CantidadComensales</dd>
-
-            <dt class="col-sm-4">Monto del depósito de garantía</dt>
-            <dd class="col-sm-8">@(Model.DepositoDeGarantia?.ToString("C"))</dd>
-        </dl>
+                    <dt class="col-sm-5 text-muted">Depósito de garantía</dt>
+                    <dd class="col-sm-7"><strong>@(Model.DepositoDeGarantia?.ToString("C"))</strong></dd>
+                </dl>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="mt-3 d-flex gap-2">
-    <a asp-action="Index" class="btn btn-outline-secondary">Volver</a>
+<div class="mt-4 d-flex gap-2">
+    <a asp-action="Index" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left me-1"></i> Volver
+    </a>
     @if (Model.Estado == (int)EstadoMesa.Reservada)
     {
         <form asp-action="Liberar" asp-route-id="@Model.Id" method="post" class="d-inline"
               onsubmit="return confirm('¿Liberar la mesa @Model.NumeroMesa?');">
             @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-outline-success">Liberar mesa</button>
+            <button type="submit" class="btn btn-outline-success">
+                <i class="bi bi-unlock me-1"></i> Liberar mesa
+            </button>
         </form>
     }
 </div>

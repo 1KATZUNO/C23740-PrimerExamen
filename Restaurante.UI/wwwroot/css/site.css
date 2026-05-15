@@ -8,10 +8,6 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
 html {
   position: relative;
   min-height: 100%;
@@ -19,13 +15,85 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: #f5f7fb;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem rgba(13, 110, 253, .25);
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+/* Navbar */
+.navbar-brand {
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+.navbar-brand .bi {
+  vertical-align: -2px;
+  margin-right: .35rem;
+}
+
+/* Header de cada módulo */
+.page-header {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border: 1px solid #e9ecef;
+  border-radius: .75rem;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+}
+.page-header h1 {
+  margin-bottom: .25rem;
+}
+.page-header .subtitle {
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+/* Tablas */
+.table thead.table-dark th {
+  font-weight: 500;
+  letter-spacing: .2px;
+}
+.table > :not(caption) > * > * {
+  vertical-align: middle;
+}
+.tabla-acciones .btn + .btn,
+.tabla-acciones form {
+  margin-left: .25rem;
+}
+
+/* Badges de estado */
+.badge.estado {
+  font-weight: 500;
+  letter-spacing: .3px;
+  padding: .45em .7em;
+}
+
+/* Cards y formularios */
+.card {
+  border: 1px solid #e9ecef;
+  border-radius: .75rem;
+}
+.card-header.bg-light {
+  border-bottom: 1px solid #e9ecef;
+  border-top-left-radius: .75rem;
+  border-top-right-radius: .75rem;
+}
+.form-label {
+  font-weight: 500;
+}
+
+/* Footer */
+.footer {
+  background-color: #ffffff;
+}
+
+/* Empty states */
+.empty-state {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: #6c757d;
+}
+.empty-state .bi {
+  font-size: 2rem;
+  color: #adb5bd;
 }
