@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="C23740-PrimerExamen/Restaurante.BL.csproj" />
+  <Project Path="Restaurante.DA/Restaurante.DA.csproj" />
+  <Project Path="Restaurante.Model/Restaurante.Model.csproj" />
+  <Project Path="Restaurante.UI/Restaurante.UI.csproj" />
+</Solution>

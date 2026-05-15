@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>C23740_PrimerExamen</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Restaurante.DA\Restaurante.DA.csproj" />
+    <ProjectReference Include="..\Restaurante.Model\Restaurante.Model.csproj" />
+  </ItemGroup>
+
+</Project>
